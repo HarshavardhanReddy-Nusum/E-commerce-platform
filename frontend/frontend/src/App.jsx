@@ -24,7 +24,6 @@ function App() {
       <Routes>
         <Route element={<AuthLayout />}>
           <Route path='/' element={<Login />} />
-          <Route path='/register' element={<Register />} />
         </Route>
         <Route element={<UserLayout />}>
           <Route path='/home' element={<ProtectedRoute><Home /></ProtectedRoute>} />
