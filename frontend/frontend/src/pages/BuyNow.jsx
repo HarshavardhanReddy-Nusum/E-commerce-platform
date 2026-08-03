@@ -39,7 +39,7 @@ const BuyNow = () => {
 
     const fetchAddress = async () => {
         try {
-            const response = await axios.get("http://localhost:3000/api/address/getAddress", {
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/address/getAddress`, {
                 withCredentials: true
             })
             console.log(response.data.address)
@@ -56,7 +56,7 @@ const BuyNow = () => {
         try {
 
             await axios.post(
-                "http://localhost:3000/api/order/addOrder",
+                `${import.meta.env.VITE_API_URL}/api/order/addOrder`,
                 {
                     productId,
                     addressId: selectedAddress,
@@ -70,7 +70,7 @@ const BuyNow = () => {
 
             if (cartId) {
                 await axios.delete(
-                    `http://localhost:3000/api/product/cart/${cartId}`,
+                    `${import.meta.env.VITE_API_URL}/api/product/cart/${cartId}`,
                     {
                         withCredentials: true
                     }
@@ -105,14 +105,14 @@ const BuyNow = () => {
             if (showEdit) {
                 console.log(showEdit);
 
-                response = await axios.patch(`http://localhost:3000/api/address/${showEdit}`, data, {
+                response = await axios.patch(`${import.meta.env.VITE_API_URL}/api/address/${showEdit}`, data, {
                     withCredentials: true
                 })
                 setShowForm(false)
                 fetchAddress()
             } else {
                 response = await axios.post(
-                    "http://localhost:3000/api/address/addAddress",
+                    `${import.meta.env.VITE_API_URL}/api/address/addAddress`,
                     data,
                     {
                         withCredentials: true
@@ -146,7 +146,7 @@ const BuyNow = () => {
 
     const removeAddress = async (item) => {
         try {
-            const response = await axios.delete(`http://localhost:3000/api/address/${item}`, {
+            const response = await axios.delete(`${import.meta.env.VITE_API_URL}/api/address/${item}`, {
                 withCredentials:true
             })
             fetchAddress();

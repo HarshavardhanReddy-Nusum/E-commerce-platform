@@ -17,7 +17,7 @@ const Home = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/api/product?page=${currentPage}`, {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/product?page=${currentPage}`, {
         withCredentials: true
       })
       setProducts(response.data.products);
@@ -33,7 +33,7 @@ const Home = () => {
 
   const getProductById = async (id) => {
     try {
-      const response = await axios.get(`http://localhost:3000/api/product/${id}`, {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/product/${id}`, {
         withCredentials: true
       })
       setSelectProduct(response.data.product)
@@ -59,7 +59,7 @@ const Home = () => {
 
   const addToCart = async (productId, quantity) => {
     try {
-      const response = await axios.post("http://localhost:3000/api/product/cart", {
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/product/cart`, {
         productId,
         quantity
       }, {

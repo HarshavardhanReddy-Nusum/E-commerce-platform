@@ -14,7 +14,7 @@ const Cart = () => {
     const fetchCart = async () => {
 
         try {
-            const response = await axios.get("http://localhost:3000/api/product/cartItems", {
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/product/cartItems`, {
                 withCredentials: true
             })
 
@@ -36,7 +36,7 @@ const Cart = () => {
 
     const removeItem = async (id) => {
         try {
-            const response = await axios.delete(`http://localhost:3000/api/product/cart/${id}`, {
+            const response = await axios.delete(`${import.meta.env.VITE_API_URL}/api/product/cart/${id}`, {
                 withCredentials: true
             })
 

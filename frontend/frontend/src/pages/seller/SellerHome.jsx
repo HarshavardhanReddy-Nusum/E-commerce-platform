@@ -54,7 +54,7 @@ const SellerHome = () => {
     try {
       let response;
       if (showEdit) {
-        response = await axios.patch(`http://localhost:3000/api/product/${showEdit}`, formData, {
+        response = await axios.patch(`${import.meta.env.VITE_API_URL}/api/product/${showEdit}`, formData, {
           withCredentials: true
         })
         setShowForm(false)
@@ -62,7 +62,7 @@ const SellerHome = () => {
       } else {
 
         response = await axios.post(
-          "http://localhost:3000/api/product/upload",
+          `${import.meta.env.VITE_API_URL}/api/product/upload`,
           formData,
           {
             withCredentials: true,
@@ -96,7 +96,7 @@ const SellerHome = () => {
 
   const getSellerProducts = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/product/seller", {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/product/seller`, {
         withCredentials: true
       })
       setGetProducts(response.data.products)
@@ -106,9 +106,8 @@ const SellerHome = () => {
   }
 
   const getProductById = async (id) => {
-    console.log("Button clicked.", id)
     try {
-      const response = await axios.get(`http://localhost:3000/api/product/${id}`, {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/product/${id}`, {
         withCredentials: true
       })
       console.log(response.data.product)
@@ -134,7 +133,7 @@ const SellerHome = () => {
 
   const removeProduct = async (id) => {
       try {
-        const response = await axios.delete(`http://localhost:3000/api/product/${id}`, {
+        const response = await axios.delete(`${import.meta.env.VITE_API_URL}/api/product/${id}`, {
           withCredentials: true
         })
         setSelectedProduct(null)

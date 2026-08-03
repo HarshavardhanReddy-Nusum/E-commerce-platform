@@ -7,7 +7,7 @@ const SellerOrders = () => {
 
     const fetchSellerOrders = async () => {
         try {
-            const sellerOrders = await axios.get("http://localhost:3000/api/order/getSellerOrders", {
+            const sellerOrders = await axios.get(`${import.meta.env.VITE_API_URL}/api/order/getSellerOrders`, {
                 withCredentials: true
             })
             setSellerOrders(sellerOrders.data.orders)
@@ -19,7 +19,7 @@ const SellerOrders = () => {
     const updateSellerOrder = async (id, status) => {
         try {
             const updateOrder = await axios.patch(
-                `http://localhost:3000/api/order/${id}`,
+                `${import.meta.env.VITE_API_URL}/api/order/${id}`,
                 {
                     orderStatus: status
                 },

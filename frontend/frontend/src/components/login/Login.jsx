@@ -31,7 +31,7 @@ const Login = () => {
 
     try {
 
-      const url = isLogin ? "http://localhost:3000/api/auth/login" : "http://localhost:3000/api/auth/register"
+      const url = isLogin ? `${import.meta.env.VITE_API_URL}/api/auth/login` : `${import.meta.env.VITE_API_URL}/api/auth/register`
       const response = await axios.post(url,
         loginData,
         { withCredentials: true }

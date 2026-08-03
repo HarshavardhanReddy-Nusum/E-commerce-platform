@@ -7,7 +7,7 @@ const Orders = () => {
   const fetchOrders = async () => {
     try {
       const orders = await axios.get(
-        "http://localhost:3000/api/order/getOrders",
+        `${import.meta.env.VITE_API_URL}/api/order/getOrders`,
         {
           withCredentials: true,
         }
@@ -21,7 +21,7 @@ const Orders = () => {
 
   const removeOrders = async (id) => {
     try {
-      const response = await axios.delete(`http://localhost:3000/api/order/${id}`,{
+      const response = await axios.delete(`${import.meta.env.VITE_API_URL}/api/order/${id}`,{
         withCredentials: true
       })
       fetchOrders();
